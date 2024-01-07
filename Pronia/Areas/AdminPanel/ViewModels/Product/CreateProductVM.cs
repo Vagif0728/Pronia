@@ -21,6 +21,10 @@ namespace Pronia.Areas.AdminPanel.ViewModels
 
         public List<int> TagIds { get; set; }
 
+        public List<int> SizeId { get; set; }
+     
 
+        public List<int> ColorId { get; set; }
+        
     }
 }

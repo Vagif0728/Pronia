@@ -25,6 +25,13 @@ namespace Pronia.Areas.AdminPanel.ViewModels
 
         public List<ProductImage>? ProductImages { get; set; }
 
+        public List<int> SizeId { get; set; }
+        public List<Size>? Size { get; set; }
+
+        public List<int> ColorId { get; set; }
+        public List<Color>? Color { get; set; }
+
+
 
 
     }

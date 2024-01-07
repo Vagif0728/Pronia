@@ -1,0 +1,60 @@
+﻿@model PaginateVM<Tag>
+@{
+    int count = (Model.CurrentPage - 1) * Model.Limit;
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tags Table</h4>
+                    <a asp-action="create" asp-controller="tag" class="btn btn-success ">Create Tag</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th> Name</th>
+                                    <th> Products Count</th>
+                                    <th> Settings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Tag tag in Model.Items)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td> @count</td>
+                                        <td> @tag.Name </td>
+                                        <td> @tag.ProductTags.Count </td>
+                                        <td>
+                                            <a asp-action="update" asp-controller="tag" asp-route-id="@tag.Id" class="btn btn-info "> <i class="mdi mdi-pen"></i> Update</a>
+                                            <a asp-action="delete" asp-controller="tag" asp-route-id="@tag.Id" class="btn btn-danger  "> <i class="mdi mdi-delete"></i> Delete</a>
+                                            <a asp-action="details" asp-controller="tag" asp-route-id="@tag.Id" class="btn btn-secondary "> <i class="mdi mdi-alert-box"></i> Details</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item @(Model.CurrentPage<=1?"disabled":"")">
+                                    <a class="page-link" asp-route-page="@(Model.CurrentPage-1)" asp-action="Index" asp-controller="tag">Previous</a>
+                                </li>
+
+                                @for (int i = 0; i < Model.TotalPage; i++)
+                                {
+                                    <li class="page-item @(i==Model.CurrentPage-1?"disabled active":"")"><a class="page-link" asp-route-page="@(i+1)" asp-action="Index" asp-controller="tag">@(i + 1)</a></li>
+                                }
+
+                                <li class="page-item @(Model.CurrentPage>=Model.TotalPage?"disabled":"")">
+                                    <a class="page-link" asp-route-page="@(Model.CurrentPage+1)" asp-action="Index" asp-controller="tag">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

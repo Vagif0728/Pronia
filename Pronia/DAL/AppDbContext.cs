@@ -23,6 +23,10 @@ namespace Pronia.DAL
         public DbSet<Setting> Settings { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
 
 
     }
